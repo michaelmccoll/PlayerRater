@@ -1,0 +1,12 @@
+.submit {
+    background-color:  rgb(40, 240, 145);
+    border-radius: 8px;
+    width: 100px;
+    height: 35px;
+    font-size: large;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin: 10px;
+    text-align: center;
+  }

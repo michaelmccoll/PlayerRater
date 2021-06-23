@@ -1,0 +1,31 @@
+
+
+label {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin: 10px;
+    text-align:left;
+    color: rgb(1, 160, 232);
+}
+
+select {
+    display:inline-block;
+    margin-left: 10px;       
+    position: relative;
+    text-align:center;
+    justify-content: center;
+    width: 250px;
+    height: 30px;
+}
+
+
+option {
+    display: inline;
+    margin-left: auto;
+    margin-right: auto;
+    margin: 10px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
