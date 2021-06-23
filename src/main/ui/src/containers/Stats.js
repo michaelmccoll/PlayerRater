@@ -2,61 +2,29 @@ import {useState, useEffect} from 'react';
 import React from 'react';
 import './Stats.css';
 
-const Stats = ({teamId,playerId}) => {
+const Stats = ({teamId,player}) => {
 
-    const [playerName, setPlayerName] = useState('')
-    const [games, setGames] = useState([])
-    const [ratings, setRatings] = useState(0)
     const [rating, setRating] = useState(0)
-    const [stats, setStats] = useState([])
-    const [loaded, setLoaded] = useState(false);
-
-
-
-    const getStats = () => {
-        if(playerId === 0) {
-            return
-        }
-        fetch(`http://localhost:8080/players/${playerId}`)
-        .then(res => res.json())
-        .then(data => {
-            setStats(data.stats[0])
-            setPlayerName(data.first_name + ' ' + data.second_name)
-            setGames(data.matches.length)
-            setRatings(data.ratings)
-        })
-        .then(() => setLoaded(true))
-    }
-
-    useEffect(()=>{
-        getStats();
-    },[])
 
     useEffect(()=>{
         avgRating()
-    }, [ratings])
+    }, [rating])
 
     const avgRating = () => {
         let sum = 0;
-        for( let i = 0; i < ratings.length; i++ ){
-            sum += ratings[i].rating
+        for( let i = 0; i < player.ratings.length; i++ ){
+            sum += player.ratings[i].rating
     }
-        setRating(sum / ratings.length)
+        let aveRating = (sum / player.ratings.length)
+        aveRating = aveRating.toFixed(2)
+        setRating(aveRating)
     }
 
-    if(playerId === 0) {
+    if(!player) {
         return(
             <p>You have not selected a Player </p>
         )
     }
-    
-    if(!loaded) {
-        return(
-            <p>...loading</p>
-        )
-    }
-
-
 
     return(
         <>
@@ -72,10 +40,10 @@ const Stats = ({teamId,playerId}) => {
                
                 <tbody>
                     <tr>
-                        <td>{playerName}</td>
-                        <td>{games}</td>
-                        <td>{stats.goals}</td>
-                        <td>{stats.assists}</td>
+                        <td>{player.first_name} {player.second_name}</td>
+                        <td>{player.matches.length}</td>
+                        <td>{player.stats[0].goals}</td>
+                        <td>{player.stats[0].assists}</td>
                         <td>{rating}</td>
                     </tr>
                 </tbody>
@@ -86,28 +54,3 @@ const Stats = ({teamId,playerId}) => {
 }
 
 export default Stats;
-
-//     const [stats,setStats] = useState([])
-//     const [loaded, setLoaded] = useState(false);
-
-//     const statsNodes = playerId.teamsheet.map(player => {
-//         return(
-//             <tr>
-//             <td>{player.first_name} {player.second_name}</td>
-//             <td>{player.matches.size}</td>
-//             <td>{player.goals}</td>
-//             <td>{player.assists}</td>
-//             <td>{player.rating}</td>
-//         </tr>
-//         )
-//     })
-
-//     return(
-//         <div>
-            
-//         </div>
-//         )
-    
-// }
-
-// export default Stats;

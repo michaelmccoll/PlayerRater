@@ -92,7 +92,7 @@ public class DataLoader implements ApplicationRunner {
         playerRepository.save(player10);
         team2.addPlayerToTeam(player10);
         teamRepository.save(team2);
-        Player player11 = new Player("Baggio","Roberto",47,"Midfield",Boolean.FALSE,team2);
+        Player player11 = new Player("Roberto","Baggio",47,"Midfield",Boolean.FALSE,team2);
         playerRepository.save(player11);
         team2.addPlayerToTeam(player11);
         teamRepository.save(team2);

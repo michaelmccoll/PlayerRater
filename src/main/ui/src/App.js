@@ -80,8 +80,16 @@ function App() {
     }
   }
 
-  const getPlayerId = (selectedTeamId) => {
-    setPlayerSelect(selectedTeamId)
+  // const getPlayerId = (selectedTeamId) => {
+  //   setPlayerSelect(selectedTeamId)
+  // }
+
+  const getPlayer = (selectedPlayerId) => {
+    for (const player of players ) {
+      if (player.id == selectedPlayerId) {
+        setPlayerSelect(player)
+      }
+    }
   }
 
   const handleRateChange = (newRating, player_id) => {
@@ -123,11 +131,11 @@ function App() {
       <NavBar/>
       <Switch>
       <Route exact path="/">
-        <Team teams={teams} players={players} loaded={loaded} handleTeamSelect={(selectedTeam) => getTeamId(selectedTeam)} handlePlayerSelect={(selectedPlayer) => getPlayerId(selectedPlayer)}/>
+        <Team teams={teams} players={players} loaded={loaded} handleTeamSelect={(selectedTeam) => getTeamId(selectedTeam)} handlePlayerSelect={(selectedPlayer) => getPlayer(selectedPlayer)}/>
       </Route>
 
       <Route path="/stats" component={Stats}>
-        <Stats playerId={playerSelect} teamId={teamSelect}/>
+        <Stats player={playerSelect} teamId={teamSelect}/>
       </Route>
 
       <Route path="/rater">
@@ -139,7 +147,7 @@ function App() {
       </Route>
 
       <Route path="/profile" component={Profile}>
-        <Profile profile={playerSelect} teamId={teamSelect}/>
+        <Profile player={playerSelect} teamId={teamSelect}/>
       </Route>
 
       <Route path="/addTeam">
@@ -153,9 +161,6 @@ function App() {
       <Route path="/addMatch">
         <AddMatch playerId={playerSelect} teamId={teamSelect}/>
       </Route>
-      {/* <Route path="/menu">
-        <Menu/>
-      </Route> */}
 
       <Route path="/editMatch/:id">
         <EditMatch playerId={playerSelect} teamId={teamSelect}/>

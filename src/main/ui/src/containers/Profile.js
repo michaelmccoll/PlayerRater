@@ -3,15 +3,30 @@ import React from 'react';
 import './Profile.css';
 import pic from '../imgs/messi/messi.jpeg';
 
-const Profile = ({profile,playerId}) => {
+const Profile = ({player,playerId}) => {
+    const [rating, setRating] = useState(0)
+
+    useEffect(()=>{
+        avgRating()
+    }, [rating])
+
+    const avgRating = () => {
+        let sum = 0;
+        for( let i = 0; i < player.ratings.length; i++ ){
+            sum += player.ratings[i].rating
+    }
+        let aveRating = (sum / player.ratings.length)
+        aveRating = aveRating.toFixed(2)
+        setRating(aveRating)
+    }
 
     return(
         <>
         <div className="profileCardWrapper">
             <img src={pic}/>
-            <div className="profileCard" style={{borderColor: profile.team.primaryColour}}>
+            <div className="profileCard" style={{borderColor: player.team.primaryColour}}>
                 <div className="badge">
-                    <img className="badge" src={profile.team.badge}/>
+                    <img className="badge" src={player.team.badge}/>
                 </div>
 
                 <div className="games">
@@ -19,11 +34,11 @@ const Profile = ({profile,playerId}) => {
                 </div>
 
                 <div className="goals">
-                    <h5>GOALS {profile.stats[0].goals}</h5>
+                    <h5>GOALS {player.stats[0].goals}</h5>
                 </div>
                 
                 <div className="assists">
-                    <h5>ASSISTS {profile.stats[0].assists}</h5>
+                    <h5>ASSISTS {player.stats[0].assists}</h5>
                 </div>
 
                 <div className="POTM">
@@ -31,19 +46,19 @@ const Profile = ({profile,playerId}) => {
                 </div>
 
                 <div className="firstName">
-                    <h5>{profile.first_name}</h5>
+                    <h5>{player.first_name}</h5>
                 </div>
                 
                 <div className="secondName">
-                    <h5>{profile.second_name}</h5>
+                    <h5>{player.second_name}</h5>
                 </div>
 
                 <div className="position">
-                    <h5>{profile.position}</h5>
+                    <h5>{player.position}</h5>
                 </div>
                 
                 <div className="rating">
-                    <h5>RATING 8.4</h5>
+                    <h5>RATING {rating}</h5>
                 </div>
                 
             </div>
@@ -54,4 +69,4 @@ const Profile = ({profile,playerId}) => {
 
 export default Profile;
 
-// {profile.stats[0].assists}
+// {player.stats[0].assists}
