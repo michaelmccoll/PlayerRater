@@ -45,11 +45,11 @@ const Profile = ({player,playerId}) => {
                     <h5>POTM</h5>
                 </div>
 
-                <div className="firstName">
+                <div className="firstName" style={{backgroundColor: player.team.secondaryColour}}>
                     <h5>{player.first_name}</h5>
                 </div>
                 
-                <div className="secondName">
+                <div className="secondName" style={{backgroundColor: player.team.secondaryColour}}>
                     <h5>{player.second_name}</h5>
                 </div>
 
