@@ -7,16 +7,6 @@ const AddMatch = ({teamId, playerId}) => {
     const [ranked, setRanked] = useState(false)
     const [opposition, setOpposition] = useState(null)
     const [homeTeam, setHomeTeam] = useState(null)
-    const [homeScore, setHomeScore] = useState(null)
-    const [awayScore, setAwayScore] = useState(null)
-    const [teamsheet, setTeamsheet] = useState(null)
-    const [stats, setStats] = useState(null)
-    const [team, setTeam] = useState(null)
-    const [ratings, setRatings] = useState(null)
-
-    // useEffect(()=>{
-    //     setRanked();
-    // },[])
 
     const setDateState = (event) => {
         setDate(event.target.value)
@@ -25,6 +15,7 @@ const AddMatch = ({teamId, playerId}) => {
     const setOppositionState = (event) => {
         setOpposition(event.target.value)
     }
+    
     const setHomeTeamState = (event) => {
         if(event.target.value === "on"){
             setHomeTeam(true)
@@ -32,7 +23,6 @@ const AddMatch = ({teamId, playerId}) => {
         else{
             setHomeTeam(false)
         }
-        
     }
 
     const addMatch = (e) => {

@@ -1,4 +1,4 @@
-import {HashRouter, Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import './NavBar.css';
 import team from '../imgs/icons/team.png';
 import stats from '../imgs/icons/stats.png';
@@ -12,23 +12,23 @@ const NavBar = () => {
         <ul className="navbar">
         <hr/>
             <li>
-                <Link className="nonHighlight" to="/"><img className="team" src={team}></img></Link>
+                <Link className="nonHighlight" to="/"><img className="team" src={team} alt="Team"></img></Link>
             </li>
     
             <li>
-                <Link className="nonHighlight" to="/stats"><img className="stats" src={stats}></img></Link>
+                <Link className="nonHighlight" to="/stats"><img className="stats" src={stats} alt="Stats"></img></Link>
             </li>
         
             <li>
-                <Link className="nonHighlight" to="/rater"><img className="rater" src={rater}></img></Link>
+                <Link className="nonHighlight" to="/rater"><img className="rater" src={rater} alt="Rater"></img></Link>
             </li>
 
             <li>
-                <Link className="nonHighlight" to="/matches"><img className="matches" src={matches}></img></Link>
+                <Link className="nonHighlight" to="/matches"><img className="matches" src={matches} alt="Matches"></img></Link>
             </li>
 
             <li> 
-                <Link className="nonHighlight" to="/profile"><img className="profile" src={profile}></img></Link>
+                <Link className="nonHighlight" to="/profile"><img className="profile" src={profile} alt="Profile"></img></Link>
             </li>
         </ul>
         </>

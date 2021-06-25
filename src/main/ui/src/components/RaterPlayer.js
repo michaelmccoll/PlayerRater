@@ -31,16 +31,16 @@ const RaterPlayer = ({player, handleChange}) => {
         ratings = <Rating 
              stop="10" 
              initialRating={rating.rating}
-             emptySymbol={<img src={star} className="star"/>}
-             fullSymbol={<img src={starFull} className="star"/>}
+             emptySymbol={<img src={star} className="star" alt="Star"/>}
+             fullSymbol={<img src={starFull} className="star" alt="Star Full"/>}
              onClick={clickEvent}
          /> 
      } else {
          ratings = <Rating 
              stop="10" 
              initialRating={1}
-             emptySymbol={<img src={star} className="star"/>}
-             fullSymbol={<img src={starFull} className="star"/>}
+             emptySymbol={<img src={star} className="star" alt="Star"/>}
+             fullSymbol={<img src={starFull} className="star" alt="Star Full"/>}
              onClick={clickEvent}
          /> 
      }
