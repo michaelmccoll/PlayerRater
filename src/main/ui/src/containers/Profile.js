@@ -3,7 +3,7 @@ import React from 'react';
 import './Profile.css';
 import pic from '../imgs/messi/messi.jpeg';
 
-const Profile = ({player,playerId}) => {
+const Profile = ({player}) => {
     const [rating, setRating] = useState(0)
 
     useEffect(()=>{
@@ -23,10 +23,10 @@ const Profile = ({player,playerId}) => {
     return(
         <>
         <div className="profileCardWrapper">
-            <img src={pic}/>
+            <img src={pic} alt="Profile Pic"/>
             <div className="profileCard" style={{borderColor: player.team.primaryColour}}>
                 <div className="badge">
-                    <img className="badge" src={player.team.badge}/>
+                    <img className="badge" src={player.team.badge} alt="Team Badge"/>
                 </div>
 
                 <div className="games">

@@ -1,6 +1,7 @@
 package PlayerRater.PlayerRater.controllers;
 
 import PlayerRater.PlayerRater.models.Team;
+import PlayerRater.PlayerRater.repositories.MatchRepository;
 import PlayerRater.PlayerRater.repositories.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,6 +15,7 @@ public class TeamController {
 
     @Autowired
     TeamRepository teamRepository;
+    MatchRepository matchRepository;
 
     @GetMapping(value = "/teams")
     public ResponseEntity<List<Team>> getAllTeams(){
@@ -30,15 +32,5 @@ public class TeamController {
         teamRepository.save(team);
         return new ResponseEntity<>(team,HttpStatus.CREATED);
     }
-
-//    @GetMapping(value = "/team")
-//    public ResponseEntity getAllTeamsAndFilters(
-//            @RequestParam(required = false, name = "name") String name
-//    ){
-//        if (name != null){
-//            return new ResponseEntity(teamRepository.findTeamByName(name), HttpStatus.OK);
-//        }
-//        return new ResponseEntity<>(teamRepository.findAll(), HttpStatus.OK);
-//    }
 
 }

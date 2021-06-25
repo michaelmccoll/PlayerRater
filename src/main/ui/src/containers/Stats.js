@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react';
 import React from 'react';
 import './Stats.css';
 
-const Stats = ({teamId,player}) => {
+const Stats = ({team,player}) => {
 
     const [rating, setRating] = useState(0)
 

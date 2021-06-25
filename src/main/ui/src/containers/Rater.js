@@ -1,5 +1,4 @@
 import React from 'react';
-import {useState} from 'react';
 import './Rater.css';
 import RaterList from '../components/RaterList';
 import Error from '../containers/Error';

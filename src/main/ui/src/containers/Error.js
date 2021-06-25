@@ -4,7 +4,7 @@ import './Error.css';
 const Error = ()=>{
     return(
         <>
-            <img className="error" src={error}></img>
+            <img className="error" src={error} alt="Error Message"></img>
             <h1 className="error">ERROR PAGE</h1>
         </>
     )

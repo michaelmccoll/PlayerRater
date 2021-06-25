@@ -26,6 +26,7 @@ function App() {
   const [latestMatch, setLatestMatch] = useState(null)
   const [loaded, setLoaded] = useState(false)
 
+  // Fetches the teams list from DB, defaults to first team Leith Walkers 'data[0]'
   const getTeams = () => {
       fetch(`http://localhost:8080/teams`)
       .then(res => res.json())
@@ -36,6 +37,7 @@ function App() {
       .then(() => setLoaded(true))
   }
 
+  // Fetches the players list from DB, defaults to first player Lionel Messi 'data[0]'
   const getPlayers = () => {
       fetch(`http://localhost:8080/players`)
       .then(res => res.json())
@@ -57,14 +59,15 @@ function App() {
     }
   }, [teamSelect, teams])
 
-  const getTeamId = (selectedTeamId) => {
+  const getTeam = (selectedTeam) => {
     for (const team of teams ) {
-      if (team.id === selectedTeamId) {
+      if (team.id == selectedTeam) {
         setTeamSelect(team)
       }
     }
   }
 
+  // Fetches the team selected's last match
   const getLatestMatch = () => {
     if (teamSelect) {
       const match = teamSelect.matches.slice(-1)[0]
@@ -73,13 +76,15 @@ function App() {
     }
   }
 
-  const getPlayer = (selectedPlayerId) => {
+  // Fetches the player selected
+  const getPlayer = (selectedPlayer) => {
     for (const player of players ) {
-      if (player.id === selectedPlayerId) {
+      if (player.id == selectedPlayer) {
         setPlayerSelect(player)
       }
     }
   }
+
 
   const handleRateChange = (newRating, player_id) => {
     let playerToBeRated = null
@@ -119,44 +124,46 @@ function App() {
       <Header/>
       <NavBar/>
       <Switch>
+
       <Route exact path="/">
-        <Team teams={teams} players={players} loaded={loaded} handleTeamSelect={(selectedTeam) => getTeamId(selectedTeam)} handlePlayerSelect={(selectedPlayer) => getPlayer(selectedPlayer)}/>
+        <Team teams={teams} players={players} loaded={loaded} handleTeamSelect={(selectedTeam) => getTeam(selectedTeam)} handlePlayerSelect={(selectedPlayer) => getPlayer(selectedPlayer)}/>
       </Route>
 
       <Route path="/stats" component={Stats}>
-        <Stats player={playerSelect} teamId={teamSelect}/>
+        <Stats player={playerSelect} team={teamSelect}/>
       </Route>
 
+      {/* Why doesn't this have a component={Rater} in the Route? */}
       <Route path="/rater">
         <Rater match={latestMatch} handleChange={(newRating, player_id) => handleRateChange(newRating, player_id)}/>
       </Route>
 
       <Route path="/matches" component={Matches}>
-        <Matches playerId={playerSelect} teamId={teamSelect}/>
+        <Matches player={playerSelect} team={teamSelect}/>
       </Route>
 
       <Route path="/profile" component={Profile}>
-        <Profile player={playerSelect} teamId={teamSelect}/>
+        <Profile player={playerSelect} team={teamSelect}/>
       </Route>
 
       <Route path="/menu">
-        <Menu playerId={playerSelect} teamId={teamSelect}/>
+        <Menu player={playerSelect} team={teamSelect}/>
       </Route>
 
       <Route path="/addTeam">
-        <AddTeam playerId={playerSelect} teamId={teamSelect}/>
+        <AddTeam player={playerSelect} team={teamSelect}/>
       </Route>
 
       <Route path="/addPlayer">
-        <AddPlayer playerId={playerSelect} teamId={teamSelect} teams={teams}/>
+        <AddPlayer player={playerSelect} team={teamSelect} teams={teams}/>
       </Route>
 
       <Route path="/addMatch">
-        <AddMatch playerId={playerSelect} teamId={teamSelect}/>
+        <AddMatch player={playerSelect} team={teamSelect}/>
       </Route>
 
       <Route path="/editMatch/:id">
-        <EditMatch playerId={playerSelect} teamId={teamSelect}/>
+        <EditMatch player={playerSelect} team={teamSelect}/>
       </Route>
 
       <Route component={Error}/>

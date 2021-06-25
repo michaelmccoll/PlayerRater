@@ -1,16 +1,7 @@
-import {useState, useEffect} from 'react';
 import './Team.css';
-
-import Stats from './Stats';
-import Rater from './Rater';
-import Matches from './Matches';
-import Profile from './Profile';
-
 
 const Team = ({teams, players, loaded, handleTeamSelect, handlePlayerSelect}) => {
 
-    const [teamSelect, setTeamSelect] = useState(null)
-    const [playerSelect, setPlayerSelect] = useState(null)
 
     if(!loaded) {
         return(
@@ -27,7 +18,7 @@ const Team = ({teams, players, loaded, handleTeamSelect, handlePlayerSelect}) =>
 
     const teamOptionNodes = teams.map(team => {
         return(
-            <option placeholder="Select Your Team" key={team.id} value={team.id}>{team.name}</option>
+            <option key={team.id} value={team.id}>{team.name}</option>
         )
       })
     
