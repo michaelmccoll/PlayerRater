@@ -28,7 +28,7 @@ function App() {
 
   // Fetches the teams list from DB, defaults to first team Leith Walkers 'data[0]'
   const getTeams = () => {
-      fetch(`http://localhost:8080/teams`)
+      fetch(`http://player-rater.herokuapp.com/teams`)
       .then(res => res.json())
       .then(data => {
         setTeams(data)
@@ -39,7 +39,7 @@ function App() {
 
   // Fetches the players list from DB, defaults to first player Lionel Messi 'data[0]'
   const getPlayers = () => {
-      fetch(`http://localhost:8080/players`)
+      fetch(`http://player-rater.herokuapp.com/players`)
       .then(res => res.json())
       .then(data =>{
         setPlayers(data)
@@ -102,7 +102,7 @@ function App() {
 }   
 
   const addRating = (rating, player) => {
-    fetch('http://localhost:8080/ratings', {
+    fetch('http://player-rater.herokuapp.com/ratings', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
