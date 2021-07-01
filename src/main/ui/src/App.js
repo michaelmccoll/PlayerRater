@@ -32,7 +32,7 @@ function App() {
       .then(res => res.json())
       .then(data => {
         setTeams(data)
-        setTeamSelect(data[0])
+        // setTeamSelect(data[0])
       })
       .then(() => setLoaded(true))
   }
@@ -43,7 +43,7 @@ function App() {
       .then(res => res.json())
       .then(data =>{
         setPlayers(data)
-        setPlayerSelect(data[0])
+        // setPlayerSelect(data[0])
       } )
       .then(() => setLoaded(true))
   }

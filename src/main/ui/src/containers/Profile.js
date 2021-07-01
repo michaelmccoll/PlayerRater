@@ -30,35 +30,31 @@ const Profile = ({player}) => {
                 </div>
 
                 <div className="games">
-                    <h5>GAMES </h5>
+                    <p><b>GAMES</b><br></br>{player.matches.length}</p>
                 </div>
 
                 <div className="goals">
-                    <h5>GOALS {player.stats[0].goals}</h5>
+                    <p><b>GOALS</b><br></br>{player.stats[0].goals}</p>
                 </div>
                 
                 <div className="assists">
-                    <h5>ASSISTS {player.stats[0].assists}</h5>
+                    <p><b>ASSISTS</b><br></br>{player.stats[0].assists}</p>
                 </div>
 
                 <div className="POTM">
-                    <h5>POTM</h5>
+                    <p><b>MVP</b><br></br>{player.stats[0].assists}</p>
                 </div>
 
-                <div className="firstName" style={{backgroundColor: player.team.secondaryColour}}>
-                    <h5>{player.first_name}</h5>
-                </div>
-                
-                <div className="secondName" style={{backgroundColor: player.team.secondaryColour}}>
-                    <h5>{player.second_name}</h5>
-                </div>
-
-                <div className="position">
-                    <h5>{player.position}</h5>
+                <div className="fullName" style={{backgroundColor: player.team.secondaryColour}}>
+                    <h5>{player.first_name} {player.second_name}</h5>
                 </div>
                 
                 <div className="rating">
-                    <h5>RATING {rating}</h5>
+                    <p><b>RATING</b><br></br>{rating}</p>
+                </div>
+
+                <div className="teamName" style={{color: player.team.secondaryColour}}>
+                    <h5>Leith Walkers</h5>
                 </div>
                 
             </div>
